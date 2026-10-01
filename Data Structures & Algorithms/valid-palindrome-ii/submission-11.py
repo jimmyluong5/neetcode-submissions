@@ -1,0 +1,37 @@
+
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        
+        #create a helper function to determine if its a palindrome
+
+        #this function returns true if its a palindrome
+
+        def is_palindrome(left, right):
+            while left < right:
+                if s[left] != s[right]:
+                    return False
+                left+=1
+                right-=1
+            return True
+        
+        
+        
+        #we do the normal palindrome check
+        left = 0
+        right = len(s)-1
+        while left < right:
+            if s[left]!=s[right]:
+                
+                #delete the right character
+                if is_palindrome(left, right-1) == True:
+                    return True
+                
+                #delete the left character
+                elif is_palindrome(left+1, right) == True:
+                    return True
+                else:
+                    return False
+            left+=1
+            right-=1
+        return True
